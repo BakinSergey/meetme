@@ -1,0 +1,31 @@
+version: '3.2'
+
+services:
+  db:
+    build:
+      context: ""
+      dockerfile: ./docker/Dockerfile_DB
+    container_name: meetme_db
+    ports:
+      - 5434:5432
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_PASSWORD: 1020
+#    volumes:
+#      - ./meet_db_data:/var/lib/postgresql/data/pgdata
+#    restart: always
+
+  back:
+    build:
+      context: ""
+      dockerfile: ./docker/Dockerfile
+    command: sh docker/z_entry_back.sh
+    container_name: back
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 8001:8000
+    depends_on:
+      - db
+#    restart: always
+
