@@ -10,7 +10,7 @@ pillow = "==6.1.0"
 django-rest-swagger = "==2.2.0"
 social-auth-app-django = "*"
 django-cors-headers = "*"
-django = "==2.2.7"
+django = "==2.2.22"
 psycopg2-binary = "==2.8.3"
 gunicorn = "*"
 
